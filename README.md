@@ -1,16 +1,29 @@
-# Microservices template
+# Microservices Template
 
-This is a template for a Spring boot Microservices project.
-First thing to know is that is based on DOCKER so every microservice is a container that can run by itself.
-There are 6 microservice and 1 shared library:
-* Zipkin --> Container userd to trace request between microservices.
-* MySql --> Container used to host the DB
-* Eureka --> In order to list all the microservices up and running
-* ApiGW --> Load Balancer
-* Auth --> Is responsible of Authentication and Registration of users
-* Core --> Is the main microservices that implements the business logic and talk with the DB
-* Clients --> Is a shared library that allows to implement FeignClients and share common utility files or classes.
+Template for Spring Boot microservices applications. Everything runs in Docker, so each service is an isolated container that can be started and managed independently.
 
-## How to start
-* Run the mvn clean and mvb package to create the docker images. (Optional)
-* Run docker-compose up
+---
+
+## Services
+
+| Service | Role |
+|---|---|
+| Zipkin | Distributed tracing between microservices |
+| MySQL | Database container |
+| Eureka | Service registry — lists all running microservices |
+| API Gateway | Load balancer and entry point |
+| Auth | Handles authentication and user registration |
+| Core | Main business logic, talks to the database |
+| Clients (shared lib) | Feign clients and shared utilities across services |
+
+---
+
+## Getting started
+
+```bash
+# Optional: build Docker images first
+mvn clean package
+
+# Start everything
+docker-compose up
+```
